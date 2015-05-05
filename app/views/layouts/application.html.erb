@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project Ruby on rails</title>
+  <title><%= yield(:title) %> | Project Ruby on rails</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/header'  %>
+
+	<!-- Wrap all page content here -->
+	<div id="wrap">
+
+		<!-- Fixed navbar -->
+	  	<%= render 'layouts/header'  %>
+	  
+	  
+	  
+	  	<!-- Begin page content -->
+	  	<div class="center-container">
+	    
+	    	<% flash.each do |msg_type, msg| %>
+				<div class="alert alert-<%= msg_type %>">
+					<%= msg %>
+				</div>
+			<% end %>
+
+			<%= yield  %>
+	    
+	  	</div>
+	  
+	</div>
+
 	
-	<% flash.each do |msg_type, msg| %>
-		<div class="alert alert-<%= msg_type %>">
-			<%= msg %>
-		</div>
-	<% end %>
-<%= yield %>
+	<%= render 'layouts/footer' %>
+
 
 </body>
 </html>
+

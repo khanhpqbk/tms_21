@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+	def index
+		@users = User.all 
+	end
   def show
   	@user = User.find(params[:id])
   end
@@ -13,6 +17,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
 
   	if @user.save
+  		log_in @user
   		# add to flash variable (need to render in views)
   		flash[:success] = "Welcome to ruby on rails"
   		redirect_to user_path(@user)
