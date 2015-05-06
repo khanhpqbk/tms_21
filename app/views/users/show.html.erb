@@ -4,3 +4,16 @@
 <%= gravatar_for(@user)  %>
 <%= @user.name %>
 </p>
+<h1> Course attending: </h1>
+<p>
+	<% @courses.each do  |c| %>
+	<%= c.name %> <br>
+	<%= c.description %> <br>
+		<% c.subjects.each do |s| %>
+		<%= s.name %>
+		<%= s.description %>
+		<% end %>
+	<br><br>
+	<% end %>
+</p>
+

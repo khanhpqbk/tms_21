@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root              'static_pages#home'
 
   get 'help'     => 'static_pages#help'
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
 
   delete 'logout' => 'sessions#destroy'
+
+
+  resources :courses
 
   resources :users
   
