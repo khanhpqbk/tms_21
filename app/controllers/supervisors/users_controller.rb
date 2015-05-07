@@ -1,12 +1,11 @@
-class UsersController < ApplicationController
+class Supervisors::UsersController < ApplicationController
 
 	def index
-		@users = User.where(supervisor: false).all.paginate(page: params[:page])
+		@supervisors = User.where(supervisor: true).all 
 	end
   def show
-  	@user = User.find(params[:id])
-    @courses = @user.courses.all
-    # @subjects = @courses.find(1).subjects.all
+  	@supervisor = User.find(params[:id])
+   
   end
 
  # GET /users/
@@ -22,16 +21,10 @@ class UsersController < ApplicationController
   		log_in @user
   		# add to flash variable (need to render in views)
   		flash[:success] = "Welcome to ruby on rails"
-  		redirect_to user_url(@user)
+  		redirect_to user_path(@user)
   	else
   		render 'new'
   	end
-  end
-
-  def destroy
-    User.find_by(id: params[:id]).destroy
-    flash[:success] = "User deleted! "
-    redirect_to users_url
   end
 
 
