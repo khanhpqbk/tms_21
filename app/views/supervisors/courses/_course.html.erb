@@ -1,0 +1,7 @@
+<li>
+  	<!-- co anh o day -->
+  	<%= course.name %> | 
+  	<%= link_to "Details", supervisors_course_path(course) %> | 
+  	<%= link_to "Delete", supervisors_course_path(course), method: :delete, data: {confirm: "Are you sure? "} %>
+</li>
+

@@ -7,7 +7,7 @@ class Supervisors::SessionsController < ApplicationController
   	supervisor = User.find_by(email: params[:session][:email].downcase)
   	if( supervisor && supervisor.authenticate(params[:session][:password]) && supervisor.supervisor?)
   		log_in supervisor
-  		redirect_to supervisors_user_path(supervisor)
+  		redirect_to supervisors_user_url(supervisor)
   	else
       if (!supervisor.supervisor?)
         flash.now[:danger] = 'Not supervisor'
@@ -20,7 +20,7 @@ class Supervisors::SessionsController < ApplicationController
 
   def destroy
   	log_out
-  	redirect_to root_path
+  	redirect_to root_url
   end
 
 end

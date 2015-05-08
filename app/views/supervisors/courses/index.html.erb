@@ -1,0 +1,14 @@
+<h1> All courses </h1>
+
+<%= will_paginate %>
+
+<ul class="courses">
+	
+  <%= render @courses %>
+</ul>
+
+
+
+<%= will_paginate %>
+
+<p style: "text_align: center"> <%= link_to "Create a new course", new_supervisors_course_path %></p>

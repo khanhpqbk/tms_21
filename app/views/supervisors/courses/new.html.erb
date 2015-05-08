@@ -1,0 +1,18 @@
+<% provide(:title, "Create new course") %>
+<h1>Create new course</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= render 'shared/error_messages_course'  %>
+
+		<%= form_for(:course, url: supervisors_courses_path) do |f|  %>
+
+			<%= f.label "Course name"  %>
+			<%= f.text_field :name, class: "form-control" %>
+
+			<%= f.label "Description" %>
+			<%= f.text_field :description, class: "form-control" %>
+
+			<%= f.submit("Create new course", class: "btn btn-primary") %>
+		<% end  %>
+	</div>
+</div>

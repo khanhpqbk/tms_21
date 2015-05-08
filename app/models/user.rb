@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	has_many :user_tasks
 	has_many :tasks, :through => :user_tasks
 
-	validates :password, length: {minimum: 6}
+	validates :password, length: {minimum: 6}, allow_blank: true
 
 
 	def User.digest(string)

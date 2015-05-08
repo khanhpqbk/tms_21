@@ -17,4 +17,13 @@ module Supervisors::SessionsHelper
 		session.delete(:user_id)
 		@current_user = nil
 	end
+
+	def logged_in_supervisor
+	    unless logged_in? && current_user.supervisor?
+	      	flash[:danger] = "Please log in (as a supervisor)."
+	      	redirect_to supervisors_login_url
+	    end
+  	end
+
+
 end

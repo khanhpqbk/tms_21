@@ -1,0 +1,8 @@
+<% provide(:title, @course.name) %>
+<h1>Course <%= @course.name%></h1>
+<p>
+<%= @course.name %>
+<%= @course.description %>
+<%= link_to "Edit", edit_supervisors_course_path(@course) %>
+
+</p>
