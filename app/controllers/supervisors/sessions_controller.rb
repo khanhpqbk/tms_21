@@ -9,7 +9,7 @@ class Supervisors::SessionsController < ApplicationController
   		log_in supervisor
   		redirect_to supervisors_user_url(supervisor)
   	else
-      if (!supervisor.supervisor?)
+      if ( supervisor && !supervisor.supervisor?)
         flash.now[:danger] = 'Not supervisor'
   		else
         flash.now[:danger] = 'Invalid email/password combination'

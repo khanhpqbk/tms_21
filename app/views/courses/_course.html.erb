@@ -1,0 +1,15 @@
+<li>
+  	<!-- co anh o day -->
+  	<%= course.name %> | 
+  	<%= link_to "Details", supervisors_course_path(course) %> 
+  	<br> 
+  	<ul>
+  	<%= course.subjects.each do |s|  %>
+  		<li>
+  			<%= s.name %> |
+  			<%= link_to "Current progress", subject_path(s) %>
+  		</li>
+  	<% end %>
+  </ul>
+</li>
+

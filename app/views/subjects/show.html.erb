@@ -1,0 +1,21 @@
+<% provide(:title, "Subject progress") %>
+<%= @subject.name %> |
+<%= @subject.description %>
+<br>
+<ul>
+<% @subject.tasks.each do |t| %>
+<!-- current_user co hoan thanh task nay  -->
+	<% if !t.users.all.find_by(id: current_user.id).nil? %>
+		<li>
+			Hoan thanh:
+			<%= t.name %>
+			
+		</li>
+	<% else %>
+		<li>
+			Chua hoan thanh:
+			<%= t.name %>
+		</li>
+	<% end %>
+<% end %>
+</ul>

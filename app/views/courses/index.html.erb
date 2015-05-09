@@ -1,0 +1,13 @@
+<% if @courses.any? %>
+
+<h1> All courses attending</h1>
+
+
+
+<ul class="courses">
+  <%= render @courses %>
+</ul>
+
+<% else %>
+<p>User currently attending no courses</p>
+<% end %>

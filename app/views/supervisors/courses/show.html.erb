@@ -1,8 +1,22 @@
 <% provide(:title, @course.name) %>
 <h1>Course <%= @course.name%></h1>
 <p>
-<%= @course.name %>
+<%= @course.name %> |
 <%= @course.description %>
-<%= link_to "Edit", edit_supervisors_course_path(@course) %>
-
 </p>
+
+<h2>Subjects in course</h2>
+<p>
+<%= @course.subjects.each do |s| %> 
+<%= s.name %> |
+<%= s.description %>
+<br>
+<% end %>
+</p>
+
+<h2> 
+	<% if current_user.supervisor? %>
+	<%= link_to "Edit", edit_supervisors_course_path(@course) %> 
+	<% end %>
+</h2>
+

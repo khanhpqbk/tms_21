@@ -59,6 +59,7 @@ class UsersController < ApplicationController
 
 
 private
+# :user o day tuong duong vs @user [?]
 	def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
