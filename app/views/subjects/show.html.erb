@@ -1,21 +1,41 @@
 <% provide(:title, "Subject progress") %>
-<%= @subject.name %> |
-<%= @subject.description %>
+
+
+<p><font size="10"><b><%= @subject.name %></b></font></p>
+<p><%= @subject.description %></p>
 <br>
-<ul>
-<% @subject.tasks.each do |t| %>
+
+<%= form_tag(subjects_path) do %>
+	<% @subject.tasks.each do |t| %>
 <!-- current_user co hoan thanh task nay  -->
-	<% if !t.users.all.find_by(id: current_user.id).nil? %>
-		<li>
-			Hoan thanh:
-			<%= t.name %>
-			
-		</li>
-	<% else %>
-		<li>
-			Chua hoan thanh:
-			<%= t.name %>
-		</li>
+	<!-- -->
+	
+		<%= label_tag "name", "Name"  %> 
+		<% if !t.users.all.find_by(id: current_user.id).nil? %>
+		<%= t.name %>
+		Finish <%= check_box_tag "id[]", t.id, true, {:disabled => true, multiple: true, :class => "myclass"}%>
+		
+		<% else %>
+		<%= t.name %>
+		Finish <%= check_box_tag "id[]", t.id, nil, {multiple: true, :class => "myclass"}%>
+		<% end %>
+		
+
+		
 	<% end %>
+<%= submit_tag "Update" %>
 <% end %>
-</ul>
+
+<b>Basic information </b>
+<p>Start date: <%= @subject.start_date %></p>
+<p>End date: <%= @subject.end_date %></p>
+<p>Status: 
+	<% if !@subject.users.find_by(id: current_user.id).nil? %>
+	Finished
+	<% else %>
+	Learning
+	<% end %>
+</p>
+
+<b>Instruction</b>
+<p><%= @subject.instruction %></p>

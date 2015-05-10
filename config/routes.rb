@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :subjects
 
+  resources :user_tasks
+
   namespace :supervisors  do
     match '/login', to: 'sessions#new', via: 'get'
     match '/logout', to: 'sessions#destroy', via: 'delete'
