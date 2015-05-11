@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   end
 
 
+
 private
 # :user o day tuong duong vs @user [?]
 	def user_params

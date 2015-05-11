@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :users
     resources :subjects
-    resources :tasks
     resources :courses
+    resources :users_courses, only: [:index]
   end
   
 

@@ -1,5 +1,5 @@
 class Supervisors::CoursesController < ApplicationController
-	before_action :logged_in_user, only: :show
+	before_action :logged_in_user, only: [:show, :show_users]
 	before_action :logged_in_supervisor, only: [:index, :new, :create, :edit, :update, :delete]
 	def index
 		@courses = Course.all.paginate(page: params[:page])
@@ -7,6 +7,7 @@ class Supervisors::CoursesController < ApplicationController
 
 	def show
 		@course = Course.find_by(id: params[:id])
+		session[:course_id] = @course.id
 	end
 
 	def new
@@ -41,6 +42,8 @@ class Supervisors::CoursesController < ApplicationController
 		Course.find_by(id: params[:id]).destroy
 		redirect_to supervisors_courses_url
 	end
+
+	
 
 private
 

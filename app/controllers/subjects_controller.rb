@@ -20,15 +20,34 @@ class SubjectsController < ApplicationController
 				@ut = UserTask.new(user_id: current_user.id, task_id: t)
 				@ut.save
 			end
+			@task = Task.find_by(id: @task_ids.first)
+			@subject = @task.subject  
 
+			if finish_subject?(@subject)
+				@us = UserSubject.new(user_id: current_user.id, subject_id: @subject.id)
+				@us.save
+			end
+			redirect_to	@subject
 			
-			redirect_to	courses_url
-			# render 'show'
 		else
 
 			redirect_to courses_url
 		end
 	end
 
+private 
+	def finish_subject?(subject)
+
+		@tasks = subject.tasks
+		@finish_tasks = current_user.tasks
+
+		@tasks.each do |t|
+			if !@finish_tasks.include?(t)
+				return false
+			end
+		end
+
+		return true
+	end
 
 end

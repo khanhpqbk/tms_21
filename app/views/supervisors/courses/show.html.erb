@@ -2,7 +2,8 @@
 <h1>Course <%= @course.name%></h1>
 <p>
 <%= @course.name %> |
-<%= @course.description %>
+<%= @course.description %> | 
+<%= link_to "Users attending course", supervisors_users_courses_path  %>
 </p>
 
 <h2>Subjects in course</h2>

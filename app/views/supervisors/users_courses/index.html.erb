@@ -1,0 +1,10 @@
+<h1> Trainees attending course <%= @course.name %></h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+	
+  <%= render @users_courses %>
+</ul>
+
+<%= will_paginate %>
