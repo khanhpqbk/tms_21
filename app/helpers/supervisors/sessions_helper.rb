@@ -20,6 +20,7 @@ module Supervisors::SessionsHelper
 
 	def logged_in_supervisor
 	    unless logged_in? && current_user.supervisor?
+	    	log_out
 	      	flash[:danger] = "Please log in (as a supervisor)."
 	      	redirect_to supervisors_login_url
 	    end

@@ -1,6 +1,5 @@
 <h1> All courses </h1>
 
-<%= will_paginate %>
 
 <ul class="courses">
 	
@@ -9,6 +8,18 @@
 
 
 
-<%= will_paginate %>
 
-<p class="btn btn-primary"> <%= link_to "Create a new course", new_supervisors_course_path %></p>
+
+<p class="btn btn-primary">
+ <%= link_to "Create a new course", new_supervisors_course_path %>
+</p>
+
+<p><b>Assign trainees to a course</b></p>
+<p>
+	<%= form_tag(supervisors_users_courses_path) do %>
+	<%= select_tag("course", options_from_collection_for_select(@courses, "id", "name")) %>
+	<%= select_tag("users[]", options_from_collection_for_select(@users, "id", "name"), multiple: true  ) %>
+	<%= submit_tag "Assign" %>
+
+	<% end %>
+</p>

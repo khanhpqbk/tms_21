@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
-	before_action :logged_in_trainee, only: [:index, :show]
+	before_action :logged_in_user, only: [:index, :show]
 
 	def index
-		@user = current_user
+		@user = User.find_by(id: session[:user_id])
 		@courses = @user.courses.all
 	end
 

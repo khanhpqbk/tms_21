@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-	before_action(:logged_in_trainee, :only => :show)
+	before_action(:logged_in_user, :only => :show)
 
 	def index
 		
@@ -13,6 +13,8 @@ class SubjectsController < ApplicationController
 		
 	end
 
+	# cap nhat tien do. hoc tap.
+	# report day by day
 	def create
 		@task_ids = params[:id]
 		if !@task_ids.nil?
@@ -23,6 +25,7 @@ class SubjectsController < ApplicationController
 			@task = Task.find_by(id: @task_ids.first)
 			@subject = @task.subject  
 
+			# neu hoan thanh subject thi luu vao user_subject
 			if finish_subject?(@subject)
 				@us = UserSubject.new(user_id: current_user.id, subject_id: @subject.id)
 				@us.save
@@ -36,6 +39,7 @@ class SubjectsController < ApplicationController
 	end
 
 private 
+	# hoan thanh subject <=> hoan thanh tat ca task trong do
 	def finish_subject?(subject)
 
 		@tasks = subject.tasks

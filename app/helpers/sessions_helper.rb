@@ -1,6 +1,8 @@
 module SessionsHelper
 	def log_in(user)
 		session[:user_id] = user.id
+		# cai nay phuc vu viec show courses ma user tham gia
+		session[:user_course_id] = user.id
 		
 	end
 
@@ -21,8 +23,9 @@ module SessionsHelper
 	# confirm login trainee
 	def logged_in_trainee
 	    unless (logged_in? && !current_user.supervisor?)
-	      flash[:danger] = "Please log in (as a trainee)."
-	      redirect_to login_url
+	    	log_out
+	      	flash[:danger] = "Please log in (as a trainee)."
+	      	redirect_to login_url
 	    end
 	end
 

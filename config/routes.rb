@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :users
     resources :subjects
     resources :courses
-    resources :users_courses, only: [:index]
+    resources :users_courses, only: [:index, :create]
   end
   
 

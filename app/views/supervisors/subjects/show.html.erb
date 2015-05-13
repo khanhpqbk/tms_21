@@ -1,0 +1,20 @@
+<% provide(:title, "Subject details") %>
+
+
+<p><font size="10"><b><%= @subject.name %></b></font></p>
+<p><%= @subject.description %></p>
+<br>
+
+<ul>
+	<% @subject.tasks.each do |t| %>	
+	<li>
+		<%= t.name %>	
+	</li>
+	<% end %>
+</ul>
+<b>Basic information </b>
+<p>Start date: <%= @subject.start_date %></p>
+<p>End date: <%= @subject.end_date %></p>
+
+<b>Instructions</b>
+<p><%= @subject.instruction %></p>

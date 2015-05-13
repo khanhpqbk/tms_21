@@ -2,7 +2,8 @@ class Supervisors::CoursesController < ApplicationController
 	before_action :logged_in_user, only: [:show]
 	before_action :logged_in_supervisor, only: [:index, :new, :create, :edit, :update, :delete]
 	def index
-		@courses = Course.all.paginate(page: params[:page])
+		@courses = Course.all
+		@users = User.where(supervisor: false).all
 	end
 
 	def show
