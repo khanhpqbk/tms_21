@@ -3,10 +3,10 @@
 <p>
 <%= @course.name %> |
 <%= @course.description %> | 
-<%= link_to "Users attending course", supervisors_users_courses_path  %>
+<%= link_to "Users attending course", supervisors_course_users_path(@course)  %>
 </p>
 
-<h2>Subjects in course</h2>
+<p><b>Subjects in course</b></p>
 <p>
 <% @course.subjects.each do |s| %> 
 <%= s.name %> |
@@ -15,9 +15,9 @@
 <% end %>
 </p>
 
-<h2> 
+<p><b>
 	<% if current_user.supervisor? %>
 	<%= link_to "Edit", edit_supervisors_course_path(@course) %> 
 	<% end %>
-</h2>
+</p></b>
 

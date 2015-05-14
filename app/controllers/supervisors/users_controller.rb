@@ -4,6 +4,8 @@ class Supervisors::UsersController < ApplicationController
 
 	def index
 		@supervisors = User.where(supervisor: true).all 
+    @course = Course.find_by(id: params[:course_id])
+    @users = @course.users
 	end
 
   def show
