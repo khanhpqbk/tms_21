@@ -5,7 +5,7 @@
 <p><%= @subject.description %></p>
 <br>
 
-<%= form_tag(subjects_path) do %>
+<%= form_tag(user_course_subjects_path(@user, @course)) do %>
 <ul>
 	<% @subject.tasks.each do |t| %>
 <!-- current_user co hoan thanh task nay  -->

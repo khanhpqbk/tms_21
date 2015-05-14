@@ -6,6 +6,8 @@ class SubjectsController < ApplicationController
 	end
 
 	def show
+		@user = User.find_by(id: params[:user_id])
+		@course = Course.find_by(id: params[:course_id])
 		@subject = Subject.find_by(id: params[:id])
 	end
 

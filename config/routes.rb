@@ -22,16 +22,10 @@ Rails.application.routes.draw do
     resources :courses do
 
       resources :subjects 
-      
+
     end
 
   end
-
-  resources :courses do
-    resources :users
-  end
-
-  resources :subjects
 
   resources :user_tasks
 
