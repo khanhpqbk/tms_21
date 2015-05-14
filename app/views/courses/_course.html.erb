@@ -7,7 +7,7 @@
   	<% course.subjects.each do |s|  %>
   		<li>
   			<%= s.name %> |
-  			<%= link_to "Current progress", subject_path(s) %>
+  			<%= link_to "Current progress", user_course_subject_path(@user, course, s) %>
   		</li>
   	<% end %>
   </ul>
