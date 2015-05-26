@@ -12,13 +12,14 @@
 	<!-- -->
 	<li>
 		<%= label_tag "name", "Name"  %> 
+		<%= hidden_field_tag "subject_id", @subject.id %>
 		<% if !t.users.all.find_by(id: current_user.id).nil? %>
 		<%= t.name %>
-		Finish <%= check_box_tag "id[]", t.id, true, {:disabled => true, multiple: true, :class => "myclass"}%>
+		Finish <%= check_box_tag "task_id[]", t.id, true, {:disabled => true, multiple: true, :class => "myclass"}%>
 		
 		<% else %>
 		<%= t.name %>
-		Finish <%= check_box_tag "id[]", t.id, nil, {multiple: true, :class => "myclass"}%>
+		Finish <%= check_box_tag "task_id[]", t.id, nil, {multiple: true, :class => "myclass"}%>
 		<% end %>
 		
 	</li>

@@ -18,16 +18,17 @@ class SubjectsController < ApplicationController
 	# cap nhat tien do. hoc tap.
 	# report day by day
 	def create
-		@task_ids = params[:id]
+		@task_ids = params[:task_id]
 		@course = Course.find_by(id: params[:course_id])
+		@subject = Subject.find_by(id: params[:subject_id])
 		
 		if !@task_ids.nil?
 			@task_ids.each do |t|
 				@ut = UserTask.new(user_id: current_user.id, task_id: t)
 				@ut.save
 			end
-			@task = Task.find_by(id: @task_ids.first)
-			@subject = @task.subject  
+			# @task = Task.find_by(id: @task_ids.first)
+			# @subject = @task.subject  
 
 			# neu hoan thanh subject thi luu vao user_subject
 			if finish_subject?(@subject)
@@ -36,10 +37,9 @@ class SubjectsController < ApplicationController
 			end
 			
 			redirect_to	user_course_subject_url(current_user, @course, @subject)
-			
 		else
 
-			redirect_to user_course_subject_url(current_user, @course, @subject)
+			redirect_to	user_course_subject_url(current_user, @course, @subject)
 		end
 	end
 
