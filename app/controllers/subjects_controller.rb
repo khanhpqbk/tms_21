@@ -19,6 +19,8 @@ class SubjectsController < ApplicationController
 	# report day by day
 	def create
 		@task_ids = params[:id]
+		@course = Course.find_by(id: params[:course_id])
+		
 		if !@task_ids.nil?
 			@task_ids.each do |t|
 				@ut = UserTask.new(user_id: current_user.id, task_id: t)
@@ -32,11 +34,12 @@ class SubjectsController < ApplicationController
 				@us = UserSubject.new(user_id: current_user.id, subject_id: @subject.id)
 				@us.save
 			end
-			redirect_to	@subject
+			
+			redirect_to	user_course_subject_url(current_user, @course, @subject)
 			
 		else
 
-			redirect_to courses_url
+			redirect_to user_course_subject_url(current_user, @course, @subject)
 		end
 	end
 
